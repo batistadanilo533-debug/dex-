@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>DEX Sistema</title>
+
+<style>
+body {font-family: Arial; background:#0b1f3a; color:white; margin:0;}
+header {background:#08152a; padding:15px; text-align:center;}
+.container {padding:15px;}
+input, button {padding:10px; margin:5px 0; width:100%; border:none; border-radius:5px;}
+button {background:#1e3a8a; color:white;}
+.card {background:#122c54; padding:10px; margin-top:10px; border-radius:8px;}
+</style>
+
+</head>
+
+<body>
+
+<header>DEX - Sistema Online</header>
+
+<div class="container">
+
+<h3>Login</h3>
+<input id="user" placeholder="Usuário">
+<input id="pass" type="password" placeholder="Senha">
+<button onclick="login()">Entrar</button>
+
+<div id="sistema" style="display:none">
+
+<h3>📦 Materiais</h3>
+<input id="material" placeholder="Material">
+<input id="qtd" placeholder="Quantidade">
+<button onclick="addMaterial()">Adicionar</button>
+
+<div id="materiais"></div>
+
+<h3>🏗️ Máquinas</h3>
+<input id="maq" placeholder="Nome da máquina">
+<button onclick="addMaquina()">Adicionar</button>
+
+<div id="maquinas"></div>
+
+</div>
+
+</div>
+
+<script>
+let users = ["admin","user1","user2","user3","user4"];
+let senha = "123456";
+
+function login(){
+let u = document.getElementById("user").value;
+let p = document.getElementById("pass").value;
+
+if(users.includes(u) && p===senha){
+document.getElementById("sistema").style.display="block";
+}else{
+alert("Login inválido");
+}
+}
+
+function addMaterial(){
+let nome = document.getElementById("material").value;
+let qtd = document.getElementById("qtd").value;
+
+let div = document.createElement("div");
+div.className="card";
+div.innerHTML = nome + " - " + qtd;
+
+document.getElementById("materiais").appendChild(div);
+}
+
+function addMaquina(){
+let nome = document.getElementById("maq").value;
+
+let div = document.createElement("div");
+div.className="card";
+div.innerHTML = nome;
+
+document.getElementById("maquinas").appendChild(div);
+}
+</script>
+
+</body>
+</html>
